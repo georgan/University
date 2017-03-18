@@ -1,4 +1,4 @@
-This README provides an overview of the MATLAB Code that was developed during the thsis. For a more detailed description of the functions, place the folder on the MATLAB path and type "help function_name" on MATLAB's command prompt. The MATLAB Code is devided into folders and subfolders as follows:
+This README provides an overview of the MATLAB Code that was developed during the thesis. For a more detailed description of the functions, place the folder on the MATLAB path and type "help function_name" on MATLAB's command prompt. The MATLAB Code is devided into folders and subfolders as follows:
 
 - AudioFeatures: contains the code of the features that are extracted from audio and are described in thesis text. The main functions that are used to compute each feature are:
 	- stnrg.m computes short time energy of signal.
