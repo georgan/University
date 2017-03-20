@@ -1,1 +1,0 @@
-Make the folder that you exported the code, the current folder. Type ''experimstart'' on the MATLAB command window to start.
