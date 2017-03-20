@@ -1,0 +1,3 @@
+Peripheral Task Instructions
+
+A number of steady tones of various frequencies will appear at the background. At some time moments, a modulated tone will appear. You have to press the space button when you detect a modulated tone.

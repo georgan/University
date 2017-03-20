@@ -1,0 +1,3 @@
+Peripheral Task Instructions
+
+A number of long tones(300 ms) of various frequencies will appear at the background. At some time moments, a shorter tone(100 ms) will appear. You have to press the space button when you detect a shorter tone.
