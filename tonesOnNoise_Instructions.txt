@@ -1,0 +1,3 @@
+Peripheral Task Instructions
+
+In this task white noise will be present at the background. At some time moments, tones of various frequencies and duration will appear. You have to press the space button when you perceive a tone.
