@@ -1,3 +1,0 @@
-Primary Task Instructions
-
-A number of low(300 Hz) and high(500 Hz) tones will appear in random order. You have to count the number of low tones that will appear. If, for any reason, you miss any tone, don't stop counting the rest of the tones. You will have to enter your answer in a box at the end of the trial.
