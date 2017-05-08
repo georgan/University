@@ -13,7 +13,7 @@ function [ nrg ] = stnrg( x, fs, N, Nolap )
 
 if nargin < 4
     if nargin < 3
-        N = .2*fs;
+        N = .03*fs;
     end
     Nolap = max(N - .01*fs,0);
 end
