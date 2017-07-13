@@ -1,0 +1,1 @@
+Calculate the Mel Frequency Cepstral Coefficients (MFCC) of a signal. Modify the file confStruct.m to adjust the parameters of the process, and the function extractMFCC to calculate the MFCC. The code is based on [1].
