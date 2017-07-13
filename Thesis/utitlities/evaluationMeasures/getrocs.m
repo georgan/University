@@ -1,5 +1,6 @@
-function [ tpr, fpr, thresh ] = getrocs( curve, td, thresh)
-%getrocs returns (tpr,fpr) pairs that can be used to create roc curves.
+function [ tpr, fpr ] = getrocs( curve, td, thresh)
+%getrocs returns True-Positive-Rate and False-Positive-Rate (tpr,fpr) pairs
+%that can be used to create ROC curves.
 % Input:
 %   curve: the curve to threshold.
 %   td: truth data, the same size as curve.
