@@ -1,6 +1,6 @@
 function [ score ] = fscore( prec, rec, beta )
 %FSCORE computes f-score
-%   SCORE = FSCORE(PREC,REC) computes the f-score SCORE of a classifies
+%   SCORE = FSCORE(PREC,REC) computes the f-score SCORE of a classification
 %   with precision PREC and recall REC. PREC and REC are arrays of the same
 %   dimensions. SCORE is an array of the same dimension as PREC and REC
 %   where each element is computed from the elements at the corresponding
