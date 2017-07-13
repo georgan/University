@@ -1,16 +1,21 @@
 function [MFCC, Energy] = extractMFCC( x, params, filterBank)
-%extractFeatures extracts MFCC features and energies in short time
+%extractMFCC extracts MFCC features and energies in short time
 %framework of signal x.
 % Input:
 %   x: sound signal
-%   params: structure which is reurned by confstruct
-%   filterbank: (Mel) filterbank used to compute the features.
+%   params: structure that is returned by confStruct
+%   filterbank: (Mel) filterbank used to compute the features (optional).
 % 
 %   Example:
 %       [s, fs] = wavread('amplitude_modulation_example.wav');
 %       params = confstruct;
 %       fBank = extractFilterBank(params);
 %       mfcc = extractMFCC(s,params,fBank);
+
+
+if nargin < 3
+    filterBank = extractFilterBank(params);
+end
 
 
 sp = preprocessMFCC(x,params);
