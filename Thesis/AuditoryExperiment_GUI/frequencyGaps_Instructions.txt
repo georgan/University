@@ -1,3 +1,0 @@
-Peripheral Task Instructions
-
-White noise will be present during the task. If you perceive anything changing on the noise background, press the space button.
