@@ -2,8 +2,7 @@ Execution control of programs using sleep/wait functions and signals. Inter-proc
 
 # Brief Description:
 
-# fork_procs:
-generates a specific process tree using the fork function to create new processes and sleep/wait functions to control their execution.
+fork_procs: generates a specific process tree using the fork function to create new processes and sleep/wait functions to control their execution.
 
 Execution example:
 ./fork_procs
