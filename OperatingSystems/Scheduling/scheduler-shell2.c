@@ -25,10 +25,14 @@ struct node{
 	char name[TASK_NAME_SZ];
 	char priority;
 	struct node *next;
-} *first, *mid, *last, *global;
+} *first, *mid, *last;
 
 int stop = -1;
 
+int empty(void){
+    if (first == NULL) return 1;
+    return 0;
+};
 
 void enqueue(int newID, int newPID, char newName[TASK_NAME_SZ], char newPrior){
 	struct node *temp = (struct node *) malloc(sizeof(struct node));
@@ -38,7 +42,7 @@ void enqueue(int newID, int newPID, char newName[TASK_NAME_SZ], char newPrior){
 	temp->priority = newPrior;
 	temp->next = NULL;
 	if (newPrior == 'h'){
-		if (first == NULL){
+		if (empty()){
 			first = temp;
 			last = temp;
 			mid = temp;
@@ -62,7 +66,7 @@ void enqueue(int newID, int newPID, char newName[TASK_NAME_SZ], char newPrior){
 		return;
 	}
 	else{
-		if (first == NULL){
+		if (empty()){
 			first = temp;
 			last = temp;
 			mid = NULL;
@@ -75,7 +79,7 @@ void enqueue(int newID, int newPID, char newName[TASK_NAME_SZ], char newPrior){
 };
 
 void dequeue(void){
-	if (first == NULL) return;
+	if (empty()) return;
 	if (first == mid) mid = NULL;
 	if (first != last){
 		struct node *temp = first;
@@ -102,7 +106,7 @@ sched_print_tasks(void)
 		printf("id=%d , pid=%d , name=%s , priority=%c \n", tempo->id,tempo->pid,tempo->name, tempo->priority);
 		tempo = tempo->next;
 	};
-	printf("Running Procedure: %s, id=%d, pid=%ld\n", global->name, global->id, (long int)global->pid);
+	
 	
 }
 
@@ -128,6 +132,7 @@ sched_kill_task_by_id(int id)
 void sched_change_priority(int id,char prior){
 	struct node *prev = NULL, *curr = first;
 	int flag = 0;
+	sched_print_tasks();
 	while ((curr != NULL)&&(flag == 0))
 	{
 		if (curr->id == id){
@@ -145,12 +150,14 @@ void sched_change_priority(int id,char prior){
 			curr = curr->next;
 		};
 	};
+	sched_print_tasks();
 
 };
 
 void sched_low_task(int id){
 	struct node *prev = NULL, *curr = first;
 	int flag = 0;
+	sched_print_tasks();
 	while ((curr != NULL)&&(flag == 0))
 	{
 		if (curr->id == id){
@@ -168,6 +175,7 @@ void sched_low_task(int id){
 			curr = curr->next;
 		};
 	};
+	sched_print_tasks();
 
 };
 
@@ -261,14 +269,16 @@ sigchld_handler(int signum)
 
 	 	if (WIFEXITED(status))
 		{
+			printf("exiiiiiiit %d\n",p);
 	 		dequeue();
-			if (first == NULL) exit(0);
+			if (empty()) exit(0);
 			alarm(SCHED_TQ_SEC);
             		kill(first->pid, SIGCONT);
 		};
 		if (WIFSIGNALED(status)){
 			struct node *prev = NULL, *curr = first;
 			int flag = 1;
+			sched_print_tasks();
 			while ((curr != NULL)&&(flag)){
 				if (curr->pid == p){
 					if (curr == mid) mid = prev;
@@ -281,16 +291,16 @@ sigchld_handler(int signum)
 				else{
 					prev = curr;
 					curr = curr->next;
-					global = curr;
 				};
 			};
-			if (first == NULL) exit(0);
+			if (empty()) exit(0);
 		};
         	if (WIFSTOPPED(status))
 		{
+			printf("stoooooooooop %d\n",p);
             		enqueue(first->id, first->pid, first->name, first->priority);
 	    		dequeue();
-			global = first;
+	    		sched_print_tasks();
             		alarm(SCHED_TQ_SEC);
            		kill(first->pid, SIGCONT);
 
@@ -511,4 +521,3 @@ int main(int argc, char *argv[])
 	fprintf(stderr, "Internal error: Reached unreachable point\n");
 	return 1;
 }
-

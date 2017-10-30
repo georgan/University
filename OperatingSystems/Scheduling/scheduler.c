@@ -153,15 +153,15 @@ int main(int argc, char *argv[])
 	}
 	if(nproc){
 	int b=1;
-	while(b){ _
+	while(b){
 		if(curr->next) 
-		curr = curr->next;
+			curr = curr->next;
 		else{
-		curr->next = head; 
-		b = 0;
+			curr->next = head; 
+			b = 0;
 		} 
 	}
-	curr = curr->next
+	curr = curr->next;
 	global_curr = curr;
 	/* Wait for all children to raise SIGSTOP before exec()ing. */
 	wait_for_ready_children(nproc);
